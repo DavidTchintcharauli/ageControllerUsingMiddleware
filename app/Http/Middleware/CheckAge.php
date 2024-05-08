@@ -15,6 +15,16 @@ class CheckAge
      */
     public function handle(Request $request, Closure $next): Response
     {
-        return $next($request);
+        if ($request->has('age')) {
+            $age = $request->input('age');
+            
+            if ($age >= 21) {
+                return redirect('/adultPage');
+            } else {
+                return redirect('/childPage');
+            }
+        } else {
+            return redirect('/');
+        }
     }
 }
