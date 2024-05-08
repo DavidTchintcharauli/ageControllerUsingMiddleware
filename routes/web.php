@@ -15,4 +15,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+})->name('welcome');
+
+Route::get('/adultPage', function () {
+    return view('adultPage');
 });
+
+Route::get('/childPage', function () {
+    return view('childPage');
+});
+
+Route::get('/check-age', function () {
+    return redirect('/');
+})->name('check.age')->middleware('checkAge');
